@@ -1,0 +1,29 @@
+@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* white text on slate-black background */
+  --foreground-rgb: 255, 255, 255;
+  --background-start-rgb: 255, 55, 42;
+  --background-end-rgb: 15, 23, 42;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    /* Ensure dark scheme matches the slate-black background with white text */
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 15, 23, 42;
+  }
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background-color: rgb(var(--background-start-rgb));
+  /* make sure background covers full viewport and text remains readable */
+  min-height: 100vh;
+  padding: 1rem;
+  
+}
