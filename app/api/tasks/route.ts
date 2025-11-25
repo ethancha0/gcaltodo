@@ -23,3 +23,15 @@ export async function GET(){
     return NextResponse.json(tasks)
 }
 
+//remove all tasks
+export async function DELETE(){
+    const deletedResults = await prisma.task.deleteMany({
+        where: {
+            completed: true
+        }
+    });
+
+    console.log("deleted tasks: ", deletedResults)
+    return NextResponse.json(deletedResults)
+}
+

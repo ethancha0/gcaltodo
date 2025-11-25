@@ -62,6 +62,21 @@ const addtask = () => {
         setReloadFlag(reloadFlag + 1);
 }
 
+    async function handleResetButton(){
+        console.log("handling reset")
+
+        // send DELETE request
+        await fetch("/api/tasks",{
+            method: "DELETE",
+            headers: {"Content-Type": "application/json"},
+            
+        })
+
+        //reload tasks
+        setReloadFlag(reloadFlag + 1)
+
+    }
+
 
   return (
     <div>
@@ -84,10 +99,17 @@ const addtask = () => {
         </form>
 
 
-        <div className="">
-            <div className="border border-gray-400 rounded-md p-4 w-fit text-slate-500 bg-amber-50 ">
-                <p className =" ">All</p>
-            </div> 
+        <div className="flex gap-3">
+
+            <button 
+            className ="border border-gray-400 rounded-md p-4 w-fit text-slate-500 bg-amber-50 hover:bg-blue-100 ">
+                All</button>
+            
+            <button 
+            className="border border-gray-400 rounded-md p-4 w-fit text-black bg-red-300 hover:bg-red-200 cursor-pointer"
+            onClick={handleResetButton}>
+                Remove Completed
+            </button>
         </div>
 
 
@@ -116,12 +138,7 @@ const addtask = () => {
           //      :null
                           
             )}
-                
-        
             </ul>
-            
-
-
         </div>
 
 
